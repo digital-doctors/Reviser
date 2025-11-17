@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reviser - AI Essay Grader</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<div class="landing-wrapper">
+    <nav class="navbar">
+        <div class="logo">Reviser</div>
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="{{ url_for('upload') }}">Get Started</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-text">
+            <h1>Reviser</h1>
+            <p class="slogan">Polish your essays with AI-guided precision</p>
+            <p class="hero-info">Upload or paste your essay, provide a rubric if needed, and receive structured feedback, scores, and improvement suggestions instantly.</p>
+            <a href="{{ url_for('upload') }}" class="btn btn-primary btn-large">Get Started</a>
+        </div>
+        <div class="hero-image">
+            <img src="https://cdn-icons-png.flaticon.com/512/1087/1087565.png" alt="Essay illustration">
+        </div>
+    </header>
+
+    <section id="features" class="features-section">
+        <h2>Why Reviser?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fa-solid fa-pen-nib fa-3x"></i>
+                <h3>Detailed Feedback</h3>
+                <p>Get comments on thesis, evidence, organization, grammar, and style, all in clear, structured format.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-chart-simple fa-3x"></i>
+                <h3>Scoring & Grades</h3>
+                <p>Receive overall grades out of 100 along with section-wise scores and letter grades for easy evaluation.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-repeat fa-3x"></i>
+                <h3>Iterative Improvement</h3>
+                <p>Grade multiple drafts and see progress. Suggestions guide your writing so you can improve effectively.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-lightbulb fa-3x"></i>
+                <h3>Smart & Modern</h3>
+                <p>AI-powered insights with a clean, modern interface designed for students, teachers, and professionals.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="landing-footer">
+        <p>&copy; 2025 Reviser. All rights reserved.</p>
+    </footer>
+</div>
+</body>
+</html>

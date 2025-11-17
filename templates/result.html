@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Essay Feedback - Reviser</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <a href="{{ url_for('home') }}" class="back-home-btn"><i class="fa-solid fa-arrow-left"></i> Back</a>
+    
+    <div class="container result-container">
+        <div class="result-header">
+            <h1>Essay Feedback</h1>
+            <p class="result-subtitle">Your essay has been analyzed and graded</p>
+        </div>
+
+        <!-- Overall Score Section -->
+        <div class="overall-score-modern">
+            <div class="grade-display">
+                <div class="grade-circle">
+                    <span class="grade-number">{{ overall_grade }}</span>
+                    <span class="grade-label">/ 100</span>
+                </div>
+                <div class="grade-details">
+                    <h3>Overall Performance</h3>
+                    <p class="grade-description">
+                        {% if overall_grade|int >= 90 %}
+                            Excellent work! Your essay demonstrates strong writing skills and clear communication.
+                        {% elif overall_grade|int >= 80 %}
+                            Great job! Your essay is well-structured with good arguments and solid writing.
+                        {% elif overall_grade|int >= 70 %}
+                            Good effort! Your essay has solid fundamentals with some areas for improvement.
+                        {% elif overall_grade|int >= 60 %}
+                            Fair work. There are several areas where you can strengthen your essay.
+                        {% else %}
+                            Needs improvement. Focus on the feedback below to enhance your writing.
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feedback Sections -->
+        <div class="feedback-sections">
+            <h2 class="sections-title">Detailed Feedback by Section</h2>
+            {% for sec in sections %}
+                <div class="feedback-card">
+                    <div class="card-header">
+                        <h3>{{ sec.title }}</h3>
+                        <span class="section-score">{{ sec.score }} / 10</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="comments">
+                            <strong><i class="fa-solid fa-comment"></i> Comments</strong>
+                            <p>{{ sec.comments | safe }}</p>
+                        </div>
+                        <div class="suggestions">
+                            <strong><i class="fa-solid fa-lightbulb"></i> Suggestions for Improvement</strong>
+                            <p>{{ sec.suggestions | safe }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <a href="{{ url_for('upload') }}" class="btn btn-primary"><i class="fa-solid fa-repeat"></i> Grade Another Essay</a>
+        </div>
+    </div>
+</body>
+</html>

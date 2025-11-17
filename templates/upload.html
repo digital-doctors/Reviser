@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upload Essay - Reviser</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <a href="{{ url_for('home') }}" class="back-home-btn"><i class="fa-solid fa-arrow-left"></i> Back</a>
+    
+    <div class="container upload-container">
+        <div class="upload-header">
+            <h1>Upload or Paste Your Essay</h1>
+            <p class="upload-subtitle">Get instant AI-powered feedback on your writing</p>
+        </div>
+
+        {% if error %}
+            <div class="error">
+                <i class="fa-solid fa-circle-exclamation"></i> {{ error }}
+            </div>
+        {% endif %}
+
+        <form method="post" enctype="multipart/form-data" class="upload-form">
+            <!-- PDF Upload Section -->
+            <div class="form-section">
+                <h3><i class="fa-solid fa-file-pdf"></i> Option 1: Upload PDF</h3>
+                <div class="input-section">
+                    <label for="pdf_file">Select a PDF file</label>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="pdf_file" name="pdf_file" accept=".pdf">
+                        <span class="file-label"><i class="fa-solid fa-cloud-arrow-up"></i> Choose file or drag here</span>
+                    </div>
+                    <p class="input-hint">Supported format: PDF (.pdf)</p>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="form-divider">
+                <span>OR</span>
+            </div>
+
+            <!-- Text Paste Section -->
+            <div class="form-section">
+                <h3><i class="fa-solid fa-keyboard"></i> Option 2: Paste Your Essay</h3>
+                <div class="input-section">
+                    <label for="essay_text">Paste your essay text here</label>
+                    <textarea id="essay_text" name="essay_text" rows="12" placeholder="Paste your complete essay here..."></textarea>
+                </div>
+            </div>
+
+            <!-- Optional Rubric Section -->
+            <div class="form-section optional-section">
+                <h3><i class="fa-solid fa-list-check"></i> Optional: Custom Rubric</h3>
+                <p class="rubric-hint">Define your grading criteria (leave blank for default evaluation)</p>
+                <div class="input-section">
+                    <label for="rubric">Enter your rubric</label>
+                    <textarea id="rubric" name="rubric" rows="4" placeholder="Example: Thesis 20%, Evidence 30%, Grammar 10%, Style 20%, Organization 20%"></textarea>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary btn-large btn-submit">
+                    <i class="fa-solid fa-circle-check"></i> Grade Essay
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
