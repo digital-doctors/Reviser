@@ -1,3 +1,4 @@
-Flask==3.2.2
+Flask==3.1.2
 PyPDF2==3.0.1
 cohere==5.2.0
+gunicorn==21.2.0
